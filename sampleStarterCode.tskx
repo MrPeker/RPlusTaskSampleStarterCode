@@ -11,6 +11,8 @@ o load param_dest:var:leftMotor param_src:aux:1:68
 o load param_dest:var:rightMotor param_src:aux:2:68
 o load param_dest:var:drivingSpeed param_src:dec_num:600
 o load param_dest:var:turningSpeed param_src:dec_num:400
+o load param_dest:var:melodyToBePlayed param_src:melody_num:2
+o load param_dest:var:melodyTime param_src:buzzertime_num:255
 - 
 o end
 - 
@@ -71,7 +73,13 @@ o load param_dest:cm:5 param_src:timer_num:2
 o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
 o end
 - 
+o function faddr_src:playMelody
+o begin
+o load param_dest:cm:17 param_src:var:melodyToBePlayed
+o load param_dest:cm:18 param_src:var:melodyTime
 - 
+o wait param_src:cm:18 lop:> param_src:buzzertime_num:0 rop:then
+o end
 - 
 - 
 - 
