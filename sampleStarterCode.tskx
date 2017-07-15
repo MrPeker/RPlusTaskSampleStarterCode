@@ -1,0 +1,102 @@
+﻿version 4.00
+cm_version 2.0
+platform CM-150
+o // param_text:Created : 7 / 15 / 2017
+o // param_text:Starter R+ Task Sample code by Mehmet Ali Peker
+- 
+o main
+o begin
+- 
+o load param_dest:var:leftMotor param_src:aux:1:68
+o load param_dest:var:rightMotor param_src:aux:2:68
+o load param_dest:var:drivingSpeed param_src:dec_num:600
+o load param_dest:var:turningSpeed param_src:dec_num:400
+- 
+o end
+- 
+- 
+o function faddr_src:forward
+o begin
+o compute param_dest:var:leftMotor param_src:dir_num:0 aop:+ param_src:var:drivingSpeed
+o compute param_dest:var:rightMotor param_src:dir_num:1024 aop:+ param_src:var:drivingSpeed
+o end
+- 
+- 
+o function faddr_src:backward
+o begin
+o compute param_dest:var:leftMotor param_src:dir_num:1024 aop:+ param_src:var:drivingSpeed
+o compute param_dest:var:rightMotor param_src:dir_num:0 aop:+ param_src:var:drivingSpeed
+o end
+- 
+- 
+o function faddr_src:turnLeft
+o begin
+o compute param_dest:var:leftMotor param_src:dir_num:0 aop:+ param_src:dec_num:0
+o compute param_dest:var:rightMotor param_src:dir_num:1024 aop:+ param_src:var:turningSpeed
+o end
+- 
+o function faddr_src:turnRight
+o begin
+o compute param_dest:var:leftMotor param_src:dir_num:0 aop:+ param_src:var:turningSpeed
+o compute param_dest:var:rightMotor param_src:dir_num:1024 aop:+ param_src:dec_num:0
+o end
+- 
+o function faddr_src:stop
+o begin
+o compute param_dest:var:leftMotor param_src:dir_num:0 aop:+ param_src:dec_num:0
+o compute param_dest:var:rightMotor param_src:dir_num:1024 aop:+ param_src:dec_num:0
+o end
+- 
+o function faddr_src:standByHalfSecond
+o begin
+o load param_dest:cm:5 param_src:timer_num:4
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o end
+- 
+o function faddr_src:standByOneInTenSecond
+o begin
+o load param_dest:cm:5 param_src:timer_num:1
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o end
+- 
+o function faddr_src:standByOneSecond
+o begin
+o load param_dest:cm:5 param_src:timer_num:8
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o end
+- 
+o function faddr_src:standByQuarterSecond
+o begin
+o load param_dest:cm:5 param_src:timer_num:2
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o end
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
