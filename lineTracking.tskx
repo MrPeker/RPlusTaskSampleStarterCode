@@ -20,6 +20,37 @@ o load param_dest:var:isTheBlackTheresholdOnBothSides param_src:bool_num:0
 o load param_dest:var:areThereObstacles param_src:bool_num:0
 o load param_dest:var:obstacleControlDistance param_src:dec_num:100
 - 
+o while(1)
+o begin
+o call faddr_dest:areThereObstacles
+o if param_src:var:areThereObstacles lop:== param_src:bool_num:1 rop:then
+o begin
+o call faddr_dest:stop
+- 
+o load param_dest:var:melodyToBePlayed param_src:melody_num:15
+o load param_dest:var:melodyTime param_src:buzzertime_num:255
+- 
+o call faddr_dest:playMelody
+o call faddr_dest:backward
+o end
+o else
+o begin
+o call faddr_dest:isTheBlackTheresholdRight
+o call faddr_dest:isTheBlackTheresholdLeft
+o if param_src:var:isTheBlackTheresholdRight lop:== param_src:bool_num:1 rop:then
+o begin
+o call faddr_dest:turnRight
+o end
+o elseif param_src:var:isTheBlackTheresholdLeft lop:== param_src:bool_num:1 rop:then
+o begin
+o call faddr_dest:turnLeft
+o end
+o else
+o begin
+o call faddr_dest:forward
+o end
+o end
+o end
 - 
 o end
 - 
