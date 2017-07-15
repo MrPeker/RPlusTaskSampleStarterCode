@@ -13,9 +13,39 @@ o load param_dest:var:drivingSpeed param_src:dec_num:600
 o load param_dest:var:turningSpeed param_src:dec_num:400
 o load param_dest:var:melodyToBePlayed param_src:melody_num:2
 o load param_dest:var:melodyTime param_src:buzzertime_num:255
+o load param_dest:var:blackThersholdValue param_src:dec_num:400
+o load param_dest:var:isTheBlackTheresholdRight param_src:bool_num:0
+o load param_dest:var:isTheBlackTheresholdLeft param_src:bool_num:0
+o load param_dest:var:isTheBlackTheresholdOnBothSides param_src:bool_num:0
+o load param_dest:var:areThereObstacles param_src:bool_num:0
+o load param_dest:var:obstacleControlDistance param_src:dec_num:100
+- 
 - 
 o end
 - 
+o function faddr_src:isTheBlackTheresholdRight
+o begin
+o if param_src:cm:15 lop:< param_src:var:blackThersholdValue rop:&& param_src:cm:13 lop:> param_src:var:blackThersholdValue rop:then
+o begin
+o load param_dest:var:isTheBlackTheresholdRight param_src:bool_num:1
+o end
+o end
+- 
+o function faddr_src:isTheBlackTheresholdLeft
+o begin
+o if param_src:cm:13 lop:< param_src:var:blackThersholdValue rop:&& param_src:cm:15 lop:> param_src:var:blackThersholdValue rop:then
+o begin
+o load param_dest:var:isTheBlackTheresholdLeft param_src:bool_num:1
+o end
+o end
+- 
+o function faddr_src:isTheBlackTheresholdOnBothSides
+o begin
+o if param_src:cm:13 lop:< param_src:var:blackThersholdValue rop:&& param_src:cm:15 lop:< param_src:var:blackThersholdValue rop:then
+o begin
+o load param_dest:var:isTheBlackTheresholdOnBothSides param_src:bool_num:1
+o end
+o end
 - 
 o function faddr_src:forward
 o begin
